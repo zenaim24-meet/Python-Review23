@@ -1,5 +1,8 @@
 def create_youtube_video (title, description):
-	video= {"title": title, "description": description, "likes": 0, "dislikes" : 0, "comments":{}}
+	hashtags = set()
+	for i in range(5):
+		hashtags.add(input("Enter hashtag: "))
+	video= {"title": title, "desription": description, "likes": 0, "dislikes" : 0, "comments":{}, "hashtag":hashtags}
 	return video 
 
 def like(video):
@@ -18,10 +21,21 @@ def add_comment(video, username, comment_text):
 	return video
 
 youtubevideo=create_youtube_video("yes","ok")
+youtubevideo2= create_youtube_video("no","ok")
+hashtags1=youtubevideo['hashtag']
+hashtags2= youtubevideo2['hashtag']
+commonhashtags=0
+for i in hashtags1:  
+	if i in hashtags2:
+		commonhashtags += 1
+		
+print(commonhashtags)
+percentage= (commonhashtags/max(len(hashtags1),len(hashtags2)))*100
+print(str(percentage) + '%')
 like(youtubevideo)
 dislike(youtubevideo)
 add_comment(youtubevideo,"zena","hi")
-print(youtubevideo)
 for i in range(495):
 	like(youtubevideo)
 print(youtubevideo)
+print(youtubevideo2)
